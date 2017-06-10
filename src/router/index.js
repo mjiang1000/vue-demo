@@ -9,8 +9,8 @@ Vue.use(VueRouter)
 //   console.log(id)
 //   return m.default(id)
 // })
-// const topicView = () => import('../view/Item.vue')
-import topicView from '../view/TopicView.vue'
+const topicView = () => import('../view/TopicView.vue')
+// import topicView from '../view/TopicView.vue'
 import createListView from '../view/CreateList'
 
 const router = new VueRouter({
@@ -22,7 +22,7 @@ const router = new VueRouter({
     { path: '/ask/:page(\\d+)?', component: createListView('ask') },
     { path: '/share/:page(\\d+)?', component: createListView('share') },
     { path: '/job/:page(\\d+)?', component: createListView('job') },
-    { path: '/topic/:id(\\d+)?', component: topicView },
+    { path: '/topic/:id', component: topicView },
     { path: '/', redirect: '/all' }
   ]
 })

@@ -17,8 +17,8 @@
     </nav>
   	
   </header>
-  <transition >
-  	<router-view ></router-view>
+  <transition name="fade" mode="out-in">
+  	<router-view class="view"></router-view>
   </transition>
 </div>
 </template>
@@ -75,4 +75,12 @@ header
       &.router-link-active
         color #fff
         background-color #80bd01
+.view
+  position relative
+
+.fade-enter-active, .fade-leave-active
+  transition all .3s ease
+.fade-enter, .fade-leave-active
+  opacity 0
+
 </style>

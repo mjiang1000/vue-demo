@@ -4,10 +4,10 @@
   	<span v-if="item.top" class="put_top">置顶</span>
   	<span v-else-if="item.good" class="put_good">精华</span>
   	<span v-else class="topiclist-tab" v-show="!!item.tab">{{TabnaemZN[item.tab] || "全部"}}</span>
-  	<a class="topic_title" v-bind:title=item.title >{{item.title}}</a>
+  	<router-link class="topic_title" :to="'/topic/' + item.id" :title="item.title" >{{item.title}}</router-link>
   </div>
 
-  <a class="user_avatar"><img v-bind:src=item.author.avatar_url></a>
+  <a class="user_avatar"><img :src="item.author.avatar_url"></a>
   <span class="user_loginname">{{item.author.loginname}}</span>
 
   <span class="reply_count">
@@ -113,6 +113,7 @@ export default {
     position relative
     left 4px
   .topic_title
+    text-decoration none
     color #333
     max-width 70%
     white-space nowrap

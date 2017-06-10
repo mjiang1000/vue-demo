@@ -10,7 +10,9 @@ export function getlist(tab='all', page=1, limit, mdrender=true) {
 }
 
 export function getTopic(id, mdrender=true, accesstoken='') {
-  return axios.get(urlPre + '/topic/'+id+'?accesstoken='+accesstoken)
+  const url = urlPre + '/topic/'+id+ 
+   (!!accesstoken ? '?accesstoken='+accesstoken : '')
+  return axios.get(url)
 }
 
 export function postTopic(accesstoken='', title='share', content="") {

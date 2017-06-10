@@ -13,6 +13,7 @@ const store = new Vuex.Store({
   state: {
   	activeType:"",
   	perpage:20,
+    topics:[],
   	lists:{
       all:[],
       top:[],
@@ -29,14 +30,25 @@ const store = new Vuex.Store({
           commit('SET_ACTIVE_TYPE',type)
           commit('SET_LIST',data)
         })
+    },
+    FETCH_TOPIC: ({dispatch, commit, state}, {id}) => {
+      return getTopic(id)
+        .then( ({data}) => {
+          commit('SET_TOPICS', data)
+        } )
     }
   },
   mutations: {
      SET_ACTIVE_TYPE: (state, {type}) =>{
        state.activeType = type;
      },
-     SET_LIST: (state, {data}) => {
+     SET_LIST: (state, {data, success}) => {
        state.lists[state.activeType] = data
+     },
+     SET_TOPICS:(state, {data, success}) => {
+      // console.log(data)
+      // state.topics[data.id] = data  错错错
+      Vue.set(state.topics, data.id, data)
      }
   },
   getters: {
