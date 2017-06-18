@@ -13,19 +13,20 @@ const topicView = () => import('../view/TopicView.vue')
 // import topicView from '../view/TopicView.vue'
 import createListView from '../view/CreateList'
 
-const router = new VueRouter({
-  mode: 'history',
-  scrollBehavior: () => ({ y: 0 }),
-  routes: [
-    { path: '/all/:page(\\d+)?', component: createListView('all') },
-    { path: '/good/:page(\\d+)?', component: createListView('good') },
-    { path: '/ask/:page(\\d+)?', component: createListView('ask') },
-    { path: '/share/:page(\\d+)?', component: createListView('share') },
-    { path: '/job/:page(\\d+)?', component: createListView('job') },
-    { path: '/topic/:id', component: topicView },
-    { path: '/', redirect: '/all' }
-  ]
-})
 
-export default router
+export  function createRouter() {
+    return new VueRouter({
+    mode: 'history',
+    scrollBehavior: () => ({ y: 0 }),
+    routes: [
+      { path: '/all/:page(\\d+)?', component: createListView('all') },
+      { path: '/good/:page(\\d+)?', component: createListView('good') },
+      { path: '/ask/:page(\\d+)?', component: createListView('ask') },
+      { path: '/share/:page(\\d+)?', component: createListView('share') },
+      { path: '/job/:page(\\d+)?', component: createListView('job') },
+      { path: '/topic/:id', component: topicView },
+      { path: '/', redirect: '/all' }
+    ]
+  })
+}
 
