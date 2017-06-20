@@ -3,7 +3,7 @@
 ### framework
 vue + vuex + vue-router
 webpack + express
-
+vue-server-renderer
 [live demo](http://45.78.29.222:8085/)
 
 script

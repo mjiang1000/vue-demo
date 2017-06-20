@@ -6,6 +6,7 @@ export default function createListView(type) {
   	name: `${type}-stories-view`,
   	title: type,
   	asyncData ({ store }) {
+      
       return store.dispatch('FETCH_ITEMS', { type })
     },
   	render(h) {

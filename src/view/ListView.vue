@@ -19,6 +19,7 @@ export default {
   	type: String
   },
   data() {
+    console.log(2)
   	return {
   		displayItems: this.$store.getters.activeItems,
       distype: this.$store.activeType

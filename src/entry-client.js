@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import 'es6-promise/auto'
-
 import { createApp } from './app'
+// import ProgressBar from './commponents/ProgressBar.vue'
 
-
-
+// a global mixin that calls `asyncData` when a route component's params change
 Vue.mixin({
   beforeRouteUpdate (to, from, next) {
     const { asyncData } = this.$options
@@ -20,10 +19,10 @@ Vue.mixin({
 })
 
 const { app, router, store } = createApp()
-
 if (window.__INITIAL_STATE__) {
   store.replaceState(window.__INITIAL_STATE__)
 }
+
 
 router.onReady(() => {
   router.beforeResolve((to, from, next) => {
@@ -45,3 +44,7 @@ router.onReady(() => {
   })
   app.$mount('#app')
 })
+
+
+
+

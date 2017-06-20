@@ -41,14 +41,17 @@ export default {
 
   computed: {
   	topic () {
-  	  return this.$store.state.topics[this.$route.params.id] 
+  	  return this.$store.getters.acttt
   	}
   },
-  beforeMount () {
-    fetchTopic(this.$store, this.$route).then(() => {
-    	this.loading = false
-    })
+  asyncData ({ store, route: { params: { id }}}) {
+    return store.dispatch('FETCH_TOPIC',{id})
   }
+  // beforeMount () {
+  //   fetchTopic(this.$store, this.$route).then(() => {
+  //   	this.loading = false
+  //   })
+  // }
 }
 </script>
 

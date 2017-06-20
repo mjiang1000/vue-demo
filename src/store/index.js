@@ -16,6 +16,7 @@ export  function createStore() {
       activeType:"",
       perpage:20,
       topics:[],
+      cur:'',
       lists:{
         all:[],
         top:[],
@@ -51,11 +52,15 @@ export  function createStore() {
         // console.log(data)
         // state.topics[data.id] = data  错错错
         Vue.set(state.topics, data.id, data)
+        state.cur = data.id
        }
     },
     getters: {
       activeItems:(state) => {
         return state.lists[state.activeType]
+      },
+      acttt: (state) => {
+        return state.topics[state.cur]
       }
     }
   })
